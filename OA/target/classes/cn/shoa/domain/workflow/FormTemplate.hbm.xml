@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping package="cn.shoa.domain.workflow">
+	  <class name="FormTemplate">
+	    <id name="ftid">
+	      <generator class="native"></generator>
+	    </id>
+	    <property name="name" length="100"></property>
+	    <property name="url" length="300"></property>
+	    <property name="processkey" length="200"></property>
+	    
+	    <set name="forms">
+	    	<key column="ftid"></key>
+	    	<one-to-many class="Form"/>
+	    </set>
+	  </class>
+	</hibernate-mapping>

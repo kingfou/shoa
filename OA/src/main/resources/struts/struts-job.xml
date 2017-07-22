@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts >
+<package name="job" extends="struts-default" namespace="/">
+  <action name="jobAction_*" method="{1}" class="jobAction">
+    <result name="listAction">/WEB-INF/jsp/system/job/list.jsp </result>
+    <result name="addUI">/WEB-INF/jsp/system/job/add.jsp </result>
+    <result name="updateUI">/WEB-INF/jsp/system/job/update.jsp</result>
+    <result name="action2action" type="redirectAction">jobAction_showJobs.action</result>
+    
+  	
+  </action>
+
+</package>
+<package name="treejson" extends="json-default" namespace="/">
+  <action name="jobTreeAction_*" method="{1}" class="jobAction">
+    <result type="json"></result>
+  </action>
+</package>
+	
+</struts>

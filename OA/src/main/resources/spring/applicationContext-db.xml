@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+        <!-- 引进配置文件hibernate的配置文件 -->
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+          <property name="configLocation">
+            <value>classpath:hibernate/hibernate.cfg.xml</value>
+          </property>
+        </bean>
+        
+        <!-- hibernate模板的生成 -->
+        <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+          <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+        
+        <!-- processEngine生成 -->
+        <bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+  		<property name="jbpmCfg" value="jbpm/jbpm.cfg.xml"></property>
+		</bean>
+  		<bean id="processEngine" factory-bean="springHelper" factory-method="createProcessEngine" />
+        
+        <!-- 事务管理声明 -->
+        <!-- 1.使用hibernate提供的事务声明机制进行操作 -->
+        <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+          <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+        
+        <!-- 2.进行事务的声明！，也就是使用spring提供的接口 -->
+        <tx:advice id="tx" transaction-manager="transactionManager"> 
+          <tx:attributes>
+            <!-- 配置需要事务控制的方法的名称 -->
+            <tx:method name="save*" isolation="DEFAULT" read-only="false" propagation="REQUIRED"/>
+             <tx:method name="get*" isolation="DEFAULT" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="delete*" isolation="DEFAULT" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="update*" isolation="DEFAULT" read-only="false" propagation="REQUIRED"/>
+          </tx:attributes>
+        </tx:advice>
+        
+        <aop:config>
+          <!-- 星号后面要有空格！！！！！  * cn.shoa.service.impl -->
+          <!-- 1.自定义一个需要拦截的切面 -->
+          <aop:pointcut expression="execution(* cn.shoa.service.impl.*.*(..))" id="perform"/>                              
+          <aop:advisor advice-ref="tx" pointcut-ref="perform"/>
+        </aop:config>
+        
+        <context:component-scan base-package="cn.shoa"></context:component-scan>
+        <tx:annotation-driven/>
+        
+        </beans>

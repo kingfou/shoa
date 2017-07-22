@@ -1,0 +1,228 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>OA</groupId>
+  <artifactId>OA</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>OA</name>
+  <description/>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.9</version>
+  	</dependency>
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.8.8</version>
+</dependency>
+
+  	
+  	
+  	<!-- 
+  		数据库连接池
+  	 -->
+  	<dependency>
+  		 <groupId>commons-dbcp</groupId>
+		 <artifactId>commons-dbcp</artifactId>
+		 <version>1.4</version>
+  	</dependency>
+  	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+			<type>jar</type>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.1</version>
+			<type>jar</type>
+			
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+			<type>jar</type>
+			
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.0.0.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+   			<groupId>org.apache.struts</groupId>
+   			<artifactId>struts2-spring-plugin</artifactId>
+   			<version>2.3.1.2</version>
+  		</dependency>
+  		
+  		
+		<dependency>
+   			<groupId>org.apache.struts</groupId>
+   			<artifactId>struts2-json-plugin</artifactId>
+   			<version>2.3.1.2</version>
+  		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.10.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+		</dependency>
+		<dependency>
+	    <groupId>org.apache.tomcat</groupId>
+	    <artifactId>tomcat-servlet-api</artifactId>
+	    <version>7.0.32</version>
+	   </dependency>
+
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.3</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.3</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<!-- jsp无法解析的jar包导入 -->
+		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- 导入jbpm的jar包 -->
+        <dependency> 
+            <groupId>org.jbpm.jbpm4</groupId> 
+            <artifactId>jbpm</artifactId> 
+            <version>4.4</version> 
+        </dependency>
+        
+		 <dependency> 
+            <groupId>org.jbpm.jbpm4</groupId> 
+            <artifactId>jbpm-api</artifactId> 
+            <version>4.4</version> 
+        </dependency> 
+        <dependency> 
+            <groupId>org.jbpm.jbpm4</groupId> 
+            <artifactId>jbpm-jpdl</artifactId> 
+            <version>4.4</version> 
+     </dependency> 
+        <dependency> 
+            <groupId>org.jbpm.jbpm4</groupId> 
+            <artifactId>jbpm-pvm</artifactId> 
+            <version>4.4</version>  
+        </dependency>
+        <dependency> 
+            <groupId>org.jbpm.jbpm4</groupId> 
+            <artifactId>jbpm-log</artifactId> 
+            <version>4.4</version> 
+        </dependency> 
+ 
+  </dependencies>
+  
+ <!-- 这里说一下maven的使用，我们的配置文件里settings 这个配置，我们可以修改一个标签
+		 使得我们的maven的本地可以进行修改，maven每次启动的时候，先去本地仓库加载我们的jar,如果本地仓库
+		 没有我们需要的jar，那么它就会根据配置文件里面的配置去对应的镜像地址去下载我们的jar到本地仓库
+		 因此，我们的配置就是mirror这个最重要的标签
+		 一般，我们使用的是nexus这个代理的中央仓库，使用这个软件我们还可以自己建立一个自己的私服
+		 第三方的仓库等，不过要让maven使用我们的nexus的话，我们需要配置它的镜像指向我们的nexus仓库地址就行。
+		 在使用的时候，我们可以先登录到nexus上面获得依赖的坐标，之后直接复制坐标
+		 在pom.xml文件里面配置好就行。
+		 同时，推荐使用的有aliyun的中央仓库和nexus-maven的远程仓库。
+		 
+		  -->
+
+
+
+  
+  
+</project>

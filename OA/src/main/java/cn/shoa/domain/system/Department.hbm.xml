@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping package="cn.shoa.domain.system">
+	  <class name="Department">
+	    <id name="did">
+	      <generator class="increment"></generator>
+	    </id>
+	    <property name="name" length="12"></property>
+	    <property name="description" length="32"></property>
+	    
+	    
+	    <set name="users" inverse="true">
+	      <key column="did"></key>
+	      <one-to-many class="User"/>
+	    </set> 
+	  </class>
+	</hibernate-mapping>

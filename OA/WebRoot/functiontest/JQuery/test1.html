@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tetst1.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script src="../js/jquery-3.1.1.min.js"></script>
+  </head>
+  
+  <body>
+  <script type="text/javascript">
+  $(function(){//这个表示在页面加载的时候会加载下面的所有的方法，进行执行
+  	//1.选择器的使用：
+    $("#p1").click(function(){
+    	$("#p1").html("contants changes!");
+    })
+    
+    //2.事件的绑定和解绑定：unbind("属性")以及bind("属性",function(){})表示
+    //将属性和方法绑定起来。
+    //2.1 事件的循环叠加
+    /* for(var i=0;i<3;i++){
+      $("#l1").click(function(){
+		alert("事件被叠加循环启动！");      
+      })
+    } */
+    
+    
+    //2.2事件的解绑
+    for(var i=0;i<3;i++){
+      $("#l1").unbind("click");
+      $("#l1").bind("click",function(){//表示将属性和事件绑定，这个时候i偶下次点击才会生效哦
+      	alert("由于在循环的时候，事件被解绑的，所有只有在下次启动的时候事件才会被触发！现在只执行一次");
+      });
+    }
+    
+   })
+  </script>
+    This is my HTML page. <br>
+    <p id="p1">点击代码块</p>
+    
+    <label id="l1">事件的绑定测试</label>
+  </body>
+</html>

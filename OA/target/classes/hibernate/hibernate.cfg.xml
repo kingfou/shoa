@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	<hibernate-configuration>
+<session-factory>
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<property name="connection.url">
+		jdbc:mysql://localhost:3306/shoa?useSSL=true
+	</property>
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">mysqladmin</property>
+
+	<!-- 配置一些hibernate提供的功能 -->
+	<property name="hibernate.hbm2ddl.auto">update</property>
+	<property name="show_sql">true</property>
+	<property name="sql_format">true</property>
+
+
+	<!-- 维护我们的关系映射文件 -->
+	<mapping resource="cn/shoa/domain/Grade.hbm.xml" />
+	<mapping resource="cn/shoa/domain/Person.hbm.xml" />
+	<mapping resource="cn/shoa/domain/menu/MenuItem.hbm.xml" />
+	<mapping resource="cn/shoa/domain/system/Department.hbm.xml" />
+	<mapping resource="cn/shoa/domain/system/Job.hbm.xml" />
+	<mapping resource="cn/shoa/domain/system/User.hbm.xml" />
+	<mapping resource="cn/shoa/domain/system/Privilege.hbm.xml" />
+
+	<!-- jbpm的表 -->
+	<mapping resource="jbpm.repository.hbm.xml" />
+	<mapping resource="jbpm.execution.hbm.xml" />
+	<mapping resource="jbpm.history.hbm.xml" />
+	<mapping resource="jbpm.task.hbm.xml" />
+	<mapping resource="jbpm.identity.hbm.xml" />
+
+	<!-- 系统内部表 -->
+	<mapping resource="cn/shoa/domain/workflow/Approve.hbm.xml" />
+	<mapping resource="cn/shoa/domain/workflow/Form.hbm.xml" />
+	<mapping resource="cn/shoa/domain/workflow/FormTemplate.hbm.xml" />
+
+
+</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tetst1.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script src="../js/jquery-3.1.1.min.js"></script>
+  </head>
+  
+  <body>
+  <script type="text/javascript">
+  $(function(){//这个表示在页面加载的时候会加载下面的所有的方法，进行执行
+  	//1.自定义事件的执行
+  	//1.1自定义事件的实现：
+  	//bind就是将事件和一个方法进行绑定的，其中的事件可以是自定义的事件（一般名称不是html的事件的话就是i自定义的事件）
+  	//事件的触发是要和方法在一次的，也就是事件触发我们的函数或者说是方法。
+  	$("#l1").bind("自定义事件",function(){
+  		alert("自定义事件的内容！");
+  	})
+  	$("#l1").unbind("click");
+  	$("#l1").bind("click",function(){
+  	  $(this).trigger("自定义事件");
+  	})
+  	
+  	//为什么在每个bind之前我们都加了一个unbind事件呢？这个主要是为了防止出现事件的叠加。
+  	$("#p1").bind("自定义事件名称",function(){
+  		alert("此处是自定义事件的触发！");
+  	})
+  	$("#p1").bind("click",function(){
+  		//点击事件和方法进行绑定，一个事件如何触发另外的一个事件的？trigger("事件名称");
+  		//trigger() 方法触发被选元素的指定事件类型。
+  		$(this).trigger("自定义事件名称");
+  	})
+    
+   })
+  </script>
+    This is my HTML page. <br>
+    <p id="p1">点击代码块</p>
+    
+    <label id="l1">事件的绑定测试</label>
+  </body>
+</html>

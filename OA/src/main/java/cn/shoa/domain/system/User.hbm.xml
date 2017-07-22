@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping package="cn.shoa.domain.system">
+	  <class name="User">
+	    <id name="uid">
+	      <generator class="increment"></generator>
+	    </id>
+	    <property name="username" length="12"></property>
+	    <property name="sex" length="12"></property>
+	    <property name="email" length="32"></property>
+	    <property name="password" length="32"></property>
+	    <property name="phone" length="32"></property>
+	    
+	   <many-to-one name="department" column="did" class="Department">
+	    </many-to-one>
+	    
+	    <!-- 不在一的一方维护我们的关系，设置为true -->
+	  <set name="jobs" table="user_job">
+	      <!-- 把外键给到别人 -->
+	      <key column="uid"></key>
+	      <many-to-many class="Job" column="jid"></many-to-many>
+	    </set> 
+	    
+	    
+	  </class>
+	</hibernate-mapping>

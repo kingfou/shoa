@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping package="cn.shoa.domain.workflow">
+	  <class name="Form">
+	    <id name="fid">
+	      <generator class="native"></generator>
+	    </id>
+	    <property name="applicator" length="30"></property>
+	    <property name="applicatetime"></property>
+	    <property name="title" length="30"></property>
+	    <property name="piid" length="30"></property>
+	    <property name="satate" length="30"></property>
+	    <property name="url" length="300"></property>
+	    <many-to-one name="formTemplate" class="FormTemplate" column="ftid"></many-to-one>
+	    <set name="approves">
+	      <key column="fid"></key>
+	      <one-to-many class="Approve"/>
+	    </set>
+	  </class>
+	</hibernate-mapping>
